@@ -44,7 +44,7 @@ namespace SalonSamochodowy
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            SalonDBEntities2 db = new SalonDBEntities2();x
+            SalonDBEntities2 db = new SalonDBEntities2();
             Car carObj = new Car()
             {
                 Marka = txtMarka.Text,
