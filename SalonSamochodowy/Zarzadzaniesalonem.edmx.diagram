@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7b51ce42376e41ebbdb1a23642953cbf" Name="Diagram1">
-        <EntityTypeShape EntityType="SalonDBModel.Car" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SalonDBModel.Shop" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector Association="SalonDBModel.FK__Car__Shop_id__5DCAEF64" ManuallyRouted="false" />
-        <AssociationConnector Association="SalonDBModel.FK__Shop__Car_id__6E01572D" ManuallyRouted="false" />
+      <Diagram DiagramId="74802bfe194e45cc98cfd03783f4be1b" Name="Diagram1">
+        <EntityTypeShape EntityType="SalonDBModel.Car" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDBModel.Klient" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDBModel.Shop" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonDBModel.Wlasciciel" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -15,6 +15,9 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publikuj\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,11 +30,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -83,28 +83,34 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Car.cs">
-      <DependentUpon>Zarzadzaniesalonem.tt</DependentUpon>
+      <DependentUpon>ZarzadzanieSalonem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Klient.cs">
+      <DependentUpon>ZarzadzanieSalonem.tt</DependentUpon>
     </Compile>
     <Compile Include="Shop.cs">
-      <DependentUpon>Zarzadzaniesalonem.tt</DependentUpon>
+      <DependentUpon>ZarzadzanieSalonem.tt</DependentUpon>
     </Compile>
     <Compile Include="Windows1.xaml.cs">
       <DependentUpon>Windows1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Zarzadzaniesalonem.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Zarzadzaniesalonem.Context.tt</DependentUpon>
+    <Compile Include="Wlasciciel.cs">
+      <DependentUpon>ZarzadzanieSalonem.tt</DependentUpon>
     </Compile>
-    <Compile Include="Zarzadzaniesalonem.cs">
+    <Compile Include="ZarzadzanieSalonem.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Zarzadzaniesalonem.tt</DependentUpon>
+      <DependentUpon>ZarzadzanieSalonem.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Zarzadzaniesalonem.Designer.cs">
+    <Compile Include="ZarzadzanieSalonem.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Zarzadzaniesalonem.edmx</DependentUpon>
+      <DependentUpon>ZarzadzanieSalonem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZarzadzanieSalonem.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZarzadzanieSalonem.edmx</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -146,12 +152,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="Zarzadzaniesalonem.edmx">
+    <EntityDeploy Include="ZarzadzanieSalonem.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Zarzadzaniesalonem.Designer.cs</LastGenOutput>
+      <LastGenOutput>ZarzadzanieSalonem.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Zarzadzaniesalonem.edmx.diagram">
-      <DependentUpon>Zarzadzaniesalonem.edmx</DependentUpon>
+    <None Include="ZarzadzanieSalonem.edmx.diagram">
+      <DependentUpon>ZarzadzanieSalonem.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -165,15 +171,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>SalonDB.mdf</DependentUpon>
     </Content>
-    <Content Include="Zarzadzaniesalonem.Context.tt">
+    <Content Include="ZarzadzanieSalonem.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Zarzadzaniesalonem.edmx</DependentUpon>
-      <LastGenOutput>Zarzadzaniesalonem.Context.cs</LastGenOutput>
+      <DependentUpon>ZarzadzanieSalonem.edmx</DependentUpon>
+      <LastGenOutput>ZarzadzanieSalonem.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Zarzadzaniesalonem.tt">
+    <Content Include="ZarzadzanieSalonem.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Zarzadzaniesalonem.edmx</DependentUpon>
-      <LastGenOutput>Zarzadzaniesalonem.cs</LastGenOutput>
+      <DependentUpon>ZarzadzanieSalonem.edmx</DependentUpon>
+      <LastGenOutput>ZarzadzanieSalonem.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

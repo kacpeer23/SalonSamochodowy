@@ -14,22 +14,10 @@ namespace SalonSamochodowy
     
     public partial class Car
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Car()
-        {
-            this.Shop1 = new HashSet<Shop>();
-        }
-    
         public int Id { get; set; }
         public string Marka { get; set; }
         public string Model { get; set; }
         public string Silnik { get; set; }
         public string Cena { get; set; }
-        public Nullable<int> Shop_id { get; set; }
-        public Nullable<int> Klient_id { get; set; }
-    
-        public virtual Shop Shop { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shop> Shop1 { get; set; }
     }
 }

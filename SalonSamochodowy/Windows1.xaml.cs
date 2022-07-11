@@ -22,15 +22,44 @@ namespace SalonSamochodowy
         public Windows1()
         {
             InitializeComponent();
-            SalonDBEntities db = new SalonDBEntities();
+            SalonDBEntities2 db = new SalonDBEntities2();
             var docs = from d in db.Car
-                       select d;
+                       select new
+                       {
+                           MarkaSamochodu = d.Marka,
+                           ModelSamochodu = d.Model,
+                           CenaSamochodu = d.Cena,
+                           SilnikSamochodu = d.Silnik
+                       };
+            
+
             foreach (var doc in docs)
             {
-                Console.WriteLine(doc.Marka);
-                Console.WriteLine(doc.Model);
+                Console.WriteLine(doc.MarkaSamochodu);
+                Console.WriteLine(doc.ModelSamochodu);
             }
             this.gridCars.ItemsSource = docs.ToList();
+
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            SalonDBEntities2 db = new SalonDBEntities2();x
+            Car carObj = new Car()
+            {
+                Marka = txtMarka.Text,
+                Model = txtModel.Text,
+                Silnik = txtSilnik.Text,
+                Cena = txtCena.Text
+            };
+            db.Car.Add(carObj);
+            db.SaveChanges();
+        }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            SalonDBEntities2 db = new SalonDBEntities2();
+            this.gridCars.ItemsSource = db.Car.ToList();
 
         }
     }

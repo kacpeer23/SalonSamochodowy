@@ -12,10 +12,10 @@ namespace SalonSamochodowy
     using System;
     using System.Collections.Generic;
     
-    public partial class Shop
+    public partial class Wlasciciel
     {
         public int Id { get; set; }
-        public string Miasto { get; set; }
-        public byte[] Marka { get; set; }
+        public string Imie { get; set; }
+        public string Nazwisko { get; set; }
     }
 }
