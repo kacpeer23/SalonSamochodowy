@@ -62,5 +62,65 @@ namespace SalonSamochodowy
             this.gridCars.ItemsSource = db.Car.ToList();
 
         }
+        private int updatingCarID = 0;
+        private void gridCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.gridCars.SelectedIndex >= 0)
+            {
+                if (this.gridCars.SelectedItems.Count >= 0)
+                {
+
+                    if (this.gridCars.SelectedItems[0].GetType() == typeof(Car))
+                    {
+                      Car car = (Car)this.gridCars.SelectedItems[0];
+                        this.txtMarka1.Text = car.Marka;
+                        this.txtModel1.Text = car.Model;
+                        this.txtSilnik1.Text = car.Silnik;
+                        this.txtCena1.Text = car.Cena;
+                        this.updatingCarID = car.Id;
+                    }
+                }
+            }
+        }
+
+        private void btnUpdateCar_Click(object sender, RoutedEventArgs e)
+        {
+            SalonDBEntities2 db = new SalonDBEntities2();
+            var r = from d in db.Car
+                    where d.Id == this.updatingCarID
+                    select d;
+           Car obj = r.SingleOrDefault();
+            
+            if(obj != null)
+            {
+                obj.Model = this.txtModel1.Text;
+                obj.Marka = this.txtMarka1.Text;
+                obj.Silnik = this.txtSilnik1.Text;
+                obj.Cena = this.txtCena1.Text;
+                db.SaveChanges();
+            }
+            
+        }
+
+        private void btnDeleteCar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult msgBoxResult = MessageBox.Show("Czy na pewno chcesz usunąć samochód z bazy danych?", "Usuń samochód", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+            if (msgBoxResult == MessageBoxResult.Yes)
+            {
+                SalonDBEntities2 db = new SalonDBEntities2();
+                var r = from d in db.Car
+                        where d.Id == this.updatingCarID
+                        select d;
+                Car obj = r.SingleOrDefault();
+                
+                if (obj != null)
+                {
+                    db.Car.Remove(obj);
+                    db.SaveChanges();
+
+                }
+            }
+
+        }
     }
 }
