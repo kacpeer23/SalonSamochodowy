@@ -13,10 +13,10 @@ namespace SalonSamochodowy
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SalonDBEntities2 : DbContext
+    public partial class SalonDBEntities3 : DbContext
     {
-        public SalonDBEntities2()
-            : base("name=SalonDBEntities2")
+        public SalonDBEntities3()
+            : base("name=SalonDBEntities3")
         {
         }
     

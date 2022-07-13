@@ -22,7 +22,7 @@ namespace SalonSamochodowy
         public Windows1()
         {
             InitializeComponent();
-            SalonDBEntities2 db = new SalonDBEntities2();
+            SalonDBEntities3 db = new SalonDBEntities3();
             var docs = from d in db.Car
                        select new
                        {
@@ -38,7 +38,7 @@ namespace SalonSamochodowy
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            SalonDBEntities2 db = new SalonDBEntities2();
+            SalonDBEntities3 db = new SalonDBEntities3();
             Car carObj = new Car()
             {
                 Marka = txtMarka.Text,
@@ -52,7 +52,7 @@ namespace SalonSamochodowy
 
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
-            SalonDBEntities2 db = new SalonDBEntities2();
+            SalonDBEntities3 db = new SalonDBEntities3();
             this.gridCars.ItemsSource = db.Car.ToList();
 
         }
@@ -80,7 +80,7 @@ namespace SalonSamochodowy
 
         private void btnUpdateCar_Click(object sender, RoutedEventArgs e)
         {
-            SalonDBEntities2 db = new SalonDBEntities2();
+            SalonDBEntities3 db = new SalonDBEntities3();
             var r = from d in db.Car
                     where d.Id == this.updatingCarID
                     select d;
@@ -102,7 +102,7 @@ namespace SalonSamochodowy
             MessageBoxResult msgBoxResult = MessageBox.Show("Czy na pewno chcesz usunąć samochód z bazy danych?", "Usuń samochód", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
             if (msgBoxResult == MessageBoxResult.Yes)
             {
-                SalonDBEntities2 db = new SalonDBEntities2();
+                SalonDBEntities3 db = new SalonDBEntities3();
                 var r = from d in db.Car
                         where d.Id == this.updatingCarID
                         select d;
@@ -120,7 +120,7 @@ namespace SalonSamochodowy
 
         private void btnAddKlient_Click(object sender, RoutedEventArgs e)
         {
-            SalonDBEntities2 db = new SalonDBEntities2();
+            SalonDBEntities3 db = new SalonDBEntities3();
             Klient klientObj = new Klient()
             {
                 Imie = txtKlientImie.Text,
@@ -132,7 +132,7 @@ namespace SalonSamochodowy
 
         private void btnLoadKlient_Click(object sender, RoutedEventArgs e)
         {
-            SalonDBEntities2 db = new SalonDBEntities2();
+            SalonDBEntities3 db = new SalonDBEntities3();
             this.gridKlient.ItemsSource = db.Klient.ToList();
         }
 
@@ -146,8 +146,8 @@ namespace SalonSamochodowy
                     if (this.gridKlient.SelectedItems[0].GetType() == typeof(Klient))
                     {
                         Klient klient = (Klient)this.gridKlient.SelectedItems[0];
-                        this.txtKlientImie.Text = klient.Imie;
-                        this.txtKlientNazwisko.Text = klient.Nazwisko;
+                        this.txtKlientImie1.Text = klient.Imie;
+                        this.txtKlientNazwisko1.Text = klient.Nazwisko;
                         this.updatingKlientID = klient.Id;
                     }
                 }
@@ -156,7 +156,7 @@ namespace SalonSamochodowy
 
         private void btnUpdateKlient_Click(object sender, RoutedEventArgs e)
         {
-            SalonDBEntities2 db = new SalonDBEntities2();
+            SalonDBEntities3 db = new SalonDBEntities3();
             var r = from d in db.Klient
                     where d.Id == this.updatingKlientID
                     select d;
@@ -175,7 +175,7 @@ namespace SalonSamochodowy
             MessageBoxResult msgBoxResult = MessageBox.Show("Czy na pewno chcesz usunąć klienta z bazy danych?", "Usuń samochód", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
             if (msgBoxResult == MessageBoxResult.Yes)
             {
-                SalonDBEntities2 db = new SalonDBEntities2();
+                SalonDBEntities3 db = new SalonDBEntities3();
                 var r = from d in db.Klient
                         where d.Id == this.updatingKlientID
                         select d;

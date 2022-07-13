@@ -19,7 +19,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Imie" Type="varchar" MaxLength="50" />
           <Property Name="Nazwisko" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -64,7 +64,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -84,7 +84,7 @@
           <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="SalonDBEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SalonDBEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Car" EntityType="Self.Car" />
           <EntitySet Name="Klient" EntityType="Self.Klient" />
           <EntitySet Name="Shop" EntityType="Self.Shop" />
@@ -95,7 +95,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SalonDBModelStoreContainer" CdmEntityContainer="SalonDBEntities2">
+        <EntityContainerMapping StorageEntityContainer="SalonDBModelStoreContainer" CdmEntityContainer="SalonDBEntities3">
           <EntitySetMapping Name="Car">
             <EntityTypeMapping TypeName="SalonDBModel.Car">
               <MappingFragment StoreEntitySet="Car">
