@@ -32,12 +32,6 @@ namespace SalonSamochodowy
                            SilnikSamochodu = d.Silnik
                        };
             
-
-            foreach (var doc in docs)
-            {
-                Console.WriteLine(doc.MarkaSamochodu);
-                Console.WriteLine(doc.ModelSamochodu);
-            }
             this.gridCars.ItemsSource = docs.ToList();
 
         }
@@ -63,6 +57,7 @@ namespace SalonSamochodowy
 
         }
         private int updatingCarID = 0;
+        private int updatingKlientID = 0;
         private void gridCars_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.gridCars.SelectedIndex >= 0)
@@ -121,6 +116,78 @@ namespace SalonSamochodowy
                 }
             }
 
+        }
+
+        private void btnAddKlient_Click(object sender, RoutedEventArgs e)
+        {
+            SalonDBEntities2 db = new SalonDBEntities2();
+            Klient klientObj = new Klient()
+            {
+                Imie = txtKlientImie.Text,
+                Nazwisko = txtKlientNazwisko.Text,
+            };
+            db.Klient.Add(klientObj);
+            db.SaveChanges();
+        }
+
+        private void btnLoadKlient_Click(object sender, RoutedEventArgs e)
+        {
+            SalonDBEntities2 db = new SalonDBEntities2();
+            this.gridKlient.ItemsSource = db.Klient.ToList();
+        }
+
+        private void gridKlient_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.gridKlient.SelectedIndex >= 0)
+            {
+                if (this.gridKlient.SelectedItems.Count >= 0)
+                {
+
+                    if (this.gridKlient.SelectedItems[0].GetType() == typeof(Klient))
+                    {
+                        Klient klient = (Klient)this.gridKlient.SelectedItems[0];
+                        this.txtKlientImie.Text = klient.Imie;
+                        this.txtKlientNazwisko.Text = klient.Nazwisko;
+                        this.updatingKlientID = klient.Id;
+                    }
+                }
+            }
+        }
+
+        private void btnUpdateKlient_Click(object sender, RoutedEventArgs e)
+        {
+            SalonDBEntities2 db = new SalonDBEntities2();
+            var r = from d in db.Klient
+                    where d.Id == this.updatingKlientID
+                    select d;
+            Klient obj = r.SingleOrDefault();
+
+            if (obj != null)
+            {
+                obj.Imie = this.txtKlientImie1.Text;
+                obj.Nazwisko = this.txtKlientNazwisko1.Text;
+                db.SaveChanges();
+            }
+        }
+
+        private void btnDeleteKlient_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult msgBoxResult = MessageBox.Show("Czy na pewno chcesz usunąć klienta z bazy danych?", "Usuń samochód", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+            if (msgBoxResult == MessageBoxResult.Yes)
+            {
+                SalonDBEntities2 db = new SalonDBEntities2();
+                var r = from d in db.Klient
+                        where d.Id == this.updatingKlientID
+                        select d;
+                Klient obj = r.SingleOrDefault();
+
+                if (obj != null)
+                {
+                    db.Klient.Remove(obj);
+                    db.SaveChanges();
+
+                }
+            }
         }
     }
 }
